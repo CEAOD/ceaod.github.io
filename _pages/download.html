@@ -204,7 +204,7 @@ layout: splash
                     if (element.type === "dir")
                         html += "<tr><td><i class='material-icons'>folder</i> <a href='#url=" + element.path + "'>" + element.name + "</a></td><td style='text-align:right;'><a onclick='window.downloadFolder(\"" + element.name + "\",\"" + element.path + "\");'><i class='material-icons'>file_download</i></a></td></tr>"
                     else
-                        html += "<tr><td><i class='material-icons'>insert_drive_file</i> <a href='#url=" + element.path + "'>" + element.name + "</a></td><td style='text-align:right;'><a onclick='window.downloadSingleFile(\"" + element.name + "\",\"" + element.download_url + "\");'><i class='material-icons'>file_download</i></a></td></tr>"
+                        html += "<tr><td><i class='material-icons'>insert_drive_file</i> " + element.name + "</td><td style='text-align:right;'><a onclick='window.downloadSingleFile(\"" + element.name + "\",\"" + element.download_url + "\");'><i class='material-icons'>file_download</i></a></td></tr>"
                 }
                 $(fetchedEl).html(html);
             };
