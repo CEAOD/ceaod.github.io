@@ -4,12 +4,12 @@ permalink: /download/
 layout: splash
 ---
 <div>
-    <h1>Download</h1>
+    <h1 id="folder_title">Download</h1>
 
     <table class="table" style="display: table!important">
         <thead>
             <tr>
-                <th width="100%" scope="col"><span id="folder_title">Name</span> <img id="loader"
+                <th width="100%" scope="col"><span id="folder_path">Name</span> <img id="loader"
                         src="/assets/images/loading.gif" alt="loading" /> <span id="status"></span></th>
                 <th scope="col"><a style="color: blue;" title="Download current folder" onclick="window.downloadCurrentFolder();"><i class='material-icons'>file_download</i></a></th>
             </tr>
@@ -65,7 +65,9 @@ layout: splash
                 return;
             }
             var paths = path.split('/');
-            $('#folder_title').html((paths.length > 0 && path.length > 0) ? paths[paths.length - 1] : "CEAOD");
+            $('#folder_title').html((paths.length > 0 && path.length > 0) ? paths[paths.length - 1] : "Download");
+            $('#folder_path').html((path.length > 0) ? path : "CEAOD");
+            
             if (paths.length >= 2)
                 PREVIOUS_DIR = paths.slice(0, paths.length - 1).join('/');
             else
