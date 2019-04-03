@@ -9,15 +9,19 @@ layout: splash
     <table class="table" style="display: table!important">
         <thead>
             <tr>
-                <th width="100%" scope="col"><span id="folder_path">Name</span> <img id="loader"
+                <th width="100%" scope="col">
+                    <a href="https://github.com/CEAOD/Data" target="_blank">
+                    <img width="24" height="24" src="/assets/images/github.png" alt="github" />
+                </a>
+                    <span style="vertical-align: middle" id="folder_path">Name</span> <img id="loader"
                         src="/assets/images/loading.gif" alt="loading" /> <span id="status"></span></th>
                 <th scope="col"><a style="color: blue;" title="Download current folder" onclick="window.downloadCurrentFolder();"><i class='material-icons'>file_download</i></a></th>
             </tr>
         </thead>
         <tbody id="directory">
             <tr>
-                <td>Hello</td>
-                <td>world! :)</td>
+                <td>Loading datasets...</td>
+                <td>:)</td>
             </tr>
         </tbody>
     </table>
@@ -31,7 +35,6 @@ layout: splash
         var BASE_URL = "https://api.github.com/repos/CEAOD/Data/contents/";
         var BASE_DIR = "";
         var PREVIOUS_DIR = "";
-
         var load = function (url, callback) {
             $('#loader').show();
             $.getJSON(url, function (data) {
@@ -82,13 +85,17 @@ layout: splash
         }
 
         var status = function (text) {
-            $('#status').text(text);
+            $('#status').html(text);
+        }
+
+        var decor = function(text){
+            return "<span style='color: red'>"+text+"</span>";
         }
 
         window.downloadSingleFile = function (filename, url) {
             var zip = new JSZip();
             $('#loader').show();
-            status("Please wait, downloading ... " + url)
+            status("Preparing... " + decor(url.split('/').pop()));
             axios.get(url, {
                 responseType: 'arraybuffer'
             }).then(function (response) {
@@ -98,6 +105,7 @@ layout: splash
                     response.data
                 );
                 var names = filename.split('.');
+                status("Compressing...");
                 zip.generateAsync({ type: "blob" }).then(function (content) {
                     saveAs(content, names.slice(0, names.length - 1).join('.') + ".zip");
                     $('#loader').fadeOut();
@@ -112,7 +120,7 @@ layout: splash
                 var dir = dirs.pop();
                 var api = buildAPIURL(dir);
 
-                status("Indexing... " + dir);
+                status("Indexing... " + decor(dir.split('/').pop()));
 
                 const response = await axios.get(api);
 
@@ -146,7 +154,7 @@ layout: splash
             var zip = new JSZip();
             for (var i = 0; i < files.length; i++) {
                 var file = files[i];
-                status("Downloading... " + file[1])
+                status("Preparing... " + decor(file[1].split('/').pop()));
                 await axios.get(file[1], {
                     responseType: 'arraybuffer'
                 }).then(function (response) {
@@ -155,8 +163,8 @@ layout: splash
                         response.data
                     );
                 });
-            }
-
+            }   
+            status("Compressing...");
             await zip.generateAsync({ type: "blob" }).then(function (content) {
                 saveAs(content, folder_name + ".zip");
                 status("");
@@ -206,9 +214,9 @@ layout: splash
                         readMe(element.download_url);
 
                     if (element.type === "dir")
-                        html += "<tr><td><i class='material-icons'>folder</i> <a href='#url=" + element.path + "'>" + element.name + "</a></td><td style='text-align:right;'><a onclick='window.downloadFolder(\"" + element.name + "\",\"" + element.path + "\");'><i class='material-icons'>file_download</i></a></td></tr>"
+                        html += "<tr><td><i class='material-icons'>folder</i> <a style='vertical-align: middle' href='#url=" + element.path + "'>" + element.name + "</a></td><td style='text-align:right;'><a onclick='window.downloadFolder(\"" + element.name + "\",\"" + element.path + "\");'><i class='material-icons'>file_download</i></a></td></tr>"
                     else
-                        html += "<tr><td><i class='material-icons'>insert_drive_file</i> " + element.name + "</td><td style='text-align:right;'><a onclick='window.downloadSingleFile(\"" + element.name + "\",\"" + element.download_url + "\");'><i class='material-icons'>file_download</i></a></td></tr>"
+                        html += "<tr><td><i class='material-icons'>insert_drive_file</i> <span style='vertical-align: middle'>" + element.name + "</span></td><td style='text-align:right;'><a onclick='window.downloadSingleFile(\"" + element.name + "\",\"" + element.download_url + "\");'><i class='material-icons'>file_download</i></a></td></tr>"
                 }
                 $(fetchedEl).html(html);
             };
