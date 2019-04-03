@@ -47,7 +47,7 @@ layout: splash
             var hash = window.location.hash.substring(1);
             var urlParams = new URLSearchParams(hash);
             var path = urlParams.get('url');
-            if (path.length === 0 || path === null)
+            if (path === null || path.length === 0)
                 return filename;
             else
                 return path + "/" + filename;
@@ -143,6 +143,12 @@ layout: splash
 
                 return null;
             }
+
+            if (path === null || path.length ===0){
+                window.location = 'https://github.com/CEAOD/Data/archive/master.zip';
+                return;
+            }
+
             var dirs_ = [path];
             var files_ = [];
             $('#loader').show();
@@ -177,7 +183,7 @@ layout: splash
             var urlParams = new URLSearchParams(hash);
             var path = urlParams.get('url');
             var folder_title = ""
-            if (path.length === 0 || path === null){
+            if (path === null || path.length === 0){
                 folder_title = "CEAOD_Dataset"
                 path = "";
             }else{
