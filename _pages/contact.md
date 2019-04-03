@@ -5,7 +5,7 @@ layout: splash
 ---
 <h1>Contact</h1>
 <div class="content notice--info">
-  <img src="http://www.kentran.net/wp-content/uploads/2018/12/2018-Casual.png" alt="Kenneth Tran" style="width:140px; height:150px;" />
+  <img src="http://www.kentran.net/wp-content/uploads/2018/12/2018-Casual.png" alt="Kenneth Tran" style="width:90px; height:95px;" />
   <div class="text">
     <h1><strong>Kenneth Tran</strong></h1>
     <h4><a href="https://www.microsoft.com/en-us/research/lab/microsoft-research-ai/" target="_blank">Microsoft Research</a></h4>
