@@ -3,7 +3,7 @@ title: Contact
 permalink: /contact/
 layout: splash
 ---
-<h1>Contact</h1>
+<h1>Maintainers</h1>
 <div class="content notice--info">
   <img src="http://www.kentran.net/wp-content/uploads/2018/12/2018-Casual.png" alt="Kenneth Tran" style="width:90px; height:95px;" />
   <div class="text">
