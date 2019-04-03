@@ -1,0 +1,225 @@
+---
+title: Download
+permalink: /download/
+layout: splash
+---
+<div>
+    <h1>Download</h1>
+
+    <table class="table" style="display: table!important">
+        <thead>
+            <tr>
+                <th width="100%" scope="col"><span id="folder_title">Name</span> <img id="loader"
+                        src="/assets/images/loading.gif" alt="loading" /> <span id="status"></span></th>
+                <th scope="col"><a style="color: blue;" title="Download current folder" onclick="window.downloadCurrentFolder();"><i class='material-icons'>file_download</i></a></th>
+            </tr>
+        </thead>
+        <tbody id="directory">
+            <tr>
+                <td>Hello</td>
+                <td>world! :)</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="notice--primary" id="readme"></div>
+</div>
+
+
+<script type="text/javascript">
+    "use strict";
+    window.onload = function () {
+        var BASE_URL = "https://api.github.com/repos/CEAOD/Data/contents/";
+        var BASE_DIR = "";
+        var PREVIOUS_DIR = "";
+
+        var load = function (url, callback) {
+            $('#loader').show();
+            $.getJSON(url, function (data) {
+                callback(data);
+                $('#loader').fadeOut();
+            });
+        };
+
+        var getCurrentPath = function (filename) {
+            var hash = window.location.hash.substring(1);
+            var urlParams = new URLSearchParams(hash);
+            var path = urlParams.get('url');
+            if (path.length === 0 || path === null)
+                return filename;
+            else
+                return path + "/" + filename;
+        }
+
+        var buildAPIURL = function (path) {
+            return BASE_URL + path + "?ref=master"
+        }
+        
+        var watchHash = function () {
+            var hash = window.location.hash.substring(1);
+            var urlParams = new URLSearchParams(hash);
+            var path = urlParams.get('url');
+            //fetch dir
+            if (path === null){
+                path = BASE_DIR;
+                window.location.hash = 'url=';
+                return;
+            }
+            var paths = path.split('/');
+            $('#folder_title').html((paths.length > 0 && path.length > 0) ? paths[paths.length - 1] : "CEAOD");
+            if (paths.length >= 2)
+                PREVIOUS_DIR = paths.slice(0, paths.length - 1).join('/');
+            else
+                PREVIOUS_DIR = "";
+
+            var apiPath = buildAPIURL(path);
+            fetch_ui(apiPath, path === BASE_DIR);
+        };
+
+        var changeHash = function (url) {
+            window.location.hash = "url=" + url;
+        }
+
+        var status = function (text) {
+            $('#status').text(text);
+        }
+
+        window.downloadSingleFile = function (filename, url) {
+            var zip = new JSZip();
+            $('#loader').show();
+            axios.get(url, {
+                responseType: 'arraybuffer'
+            }).then(function (response) {
+                // var blob = new Blob([new Uint8Array(response.data)]);
+                zip.file(
+                    getCurrentPath(filename),
+                    response.data
+                );
+                var names = filename.split('.');
+                zip.generateAsync({ type: "blob" }).then(function (content) {
+                    saveAs(content, names.slice(0, names.length - 1).join('.') + ".zip");
+                    $('#loader').fadeOut();
+                });
+
+            });
+        }
+
+        window.downloadFolder = function (folder_name, path) {
+            var explore = async function (dirs, files) {
+                var dir = dirs.pop();
+                var api = buildAPIURL(dir);
+
+                status("Indexing... " + dir);
+
+                const response = await axios.get(api);
+
+                for (var i = 0; i < response.data.length; i++) {
+                    var el = response.data[i];
+                    if (el.type === 'dir') {
+                        dirs.push(el.path);
+                    } else {
+                        files.push([
+                            el.path,
+                            el.download_url
+                        ])
+                    }
+                }
+
+                if (dirs.length <= 0) {
+                    await downloadFiles(folder_name, files);
+                } else
+                    await explore(dirs, files);
+
+                return null;
+            }
+            var dirs_ = [path];
+            var files_ = [];
+            $('#loader').show();
+            explore(dirs_, files_);
+        }
+
+        var downloadFiles = async function (folder_name, files) {
+            $('#loader').show();
+            var zip = new JSZip();
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                status("Downloading... " + file[1])
+                await axios.get(file[1], {
+                    responseType: 'arraybuffer'
+                }).then(function (response) {
+                    zip.file(
+                        file[0],
+                        response.data
+                    );
+                });
+            }
+
+            await zip.generateAsync({ type: "blob" }).then(function (content) {
+                saveAs(content, folder_name + ".zip");
+                status("");
+                $('#loader').fadeOut();
+            });
+        }
+
+        window.downloadCurrentFolder = function(){
+            var hash = window.location.hash.substring(1);
+            var urlParams = new URLSearchParams(hash);
+            var path = urlParams.get('url');
+            var folder_title = ""
+            if (path.length === 0 || path === null){
+                folder_title = "CEAOD_Dataset"
+                path = "";
+            }else{
+                folder_title = $('#folder_title').text();
+            }            
+            downloadFolder(folder_title, path);
+        }
+
+        var readMe = function (raw_url) {
+            var converter = new showdown.Converter();
+            $.get(raw_url, function (data) {
+                var html = converter.makeHtml(data);
+                $('#readme').html(html);
+                $('#readme').fadeIn();
+            });
+        }
+
+        var clearReadme = function () {
+            $('#readme').html('');
+            $('#readme').hide();
+        }
+
+        window.gitNavigate = function (path) {
+            changeHash(path);
+        };
+
+        var fetch_ui = function (url, is_base) {
+            var render = function (data, fetchedEl) {
+                var html = (is_base) ? "" : "<tr><td><a href='#url=" + PREVIOUS_DIR + "'><i class='material-icons'>arrow_back</i> ..</a></td><td>&nbsp;</td></tr>";
+                for (var i = 0; i < data.length; i++) {
+                    var element = data[i];
+
+                    if (element.name.toLowerCase().indexOf('readme.md') !== -1) 
+                        readMe(element.download_url);
+
+                    if (element.type === "dir")
+                        html += "<tr><td><i class='material-icons'>folder</i> <a href='#url=" + element.path + "'>" + element.name + "</a></td><td style='text-align:right;'><a onclick='window.downloadFolder(\"" + element.name + "\",\"" + element.path + "\");'><i class='material-icons'>file_download</i></a></td></tr>"
+                    else
+                        html += "<tr><td><i class='material-icons'>insert_drive_file</i> <a href='#url=" + element.path + "'>" + element.name + "</a></td><td style='text-align:right;'><a onclick='window.downloadSingleFile(\"" + element.name + "\",\"" + element.download_url + "\");'><i class='material-icons'>file_download</i></a></td></tr>"
+                }
+                $(fetchedEl).html(html);
+            };
+
+            load(url, function (response) {
+                clearReadme();
+                render(response, "#directory");
+            });
+        }
+
+        $(document).ready(function () {
+            $('#loader').hide();
+            window.onhashchange = watchHash;
+            $(window).trigger('hashchange');
+        });
+    };
+
+</script>
