@@ -14,7 +14,7 @@ layout: splash
         <i class="material-icons">language</i>
         <a href="http://www.kentran.net/" target="_blank">kentran.net</a>
         | <i class="material-icons">email</i>
-        <a href="mailto:one@kentran.net">one@www.kentran.net</a>
+        <a href="mailto:one@kentran.net">one@kentran.net</a>
 
     </p>
   </div>
