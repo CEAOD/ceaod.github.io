@@ -7,7 +7,7 @@ layout: splash
 # Contribute
 This guide helps you contributing your dataset to CEAOD.
 
-> You need a GitHub account which has the permission to contribute to the CEAOD Data repository. You can get a GitHub account [here](https://github.com/join), and request your permission by [contacting](/contact) the maintainer.
+> You need a GitHub account which has the permission to contribute to the CEAOD Data repository. You can get a GitHub account [here](https://github.com/join), and request your permission by [contacting](/contact) the maintainers.
 
 1. Download and install [GitHub Desktop](https://desktop.github.com)
 2. Sign in and configure your profile in GitHub Desktop  
@@ -41,5 +41,5 @@ Then `Create branch`.
 - Now you can see, your changes is committed and nothing is in `Changes` panel. Click `Publish branch` to submit the dataset.  
 ![Submit 2](/assets/images/guide/10.png#fig)  <br />
 8. **Review the dataset**  
-You can commit and publish the dataset many times using GitHub Desktop. Once you done, go to `https://github.com/CEAOD/Data/branches`, you can see your dataset there, click `New pull request` to notice the maintainer merge your dataset to the `master` branch which is showed in [Download section](/download/).
+You can commit and publish the dataset many times using GitHub Desktop. Once you done, go to `https://github.com/CEAOD/Data/branches`, you can see your dataset there, click `New pull request` to notice the maintainers merge your dataset to the `master` branch which is showed in [Download section](/download/).
 ![Submit 2](/assets/images/guide/11.png#fig)  <br />
