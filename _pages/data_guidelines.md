@@ -1,9 +1,9 @@
 ---
-title: Data Format Recommendation
-permalink: /data-format-recommendation/
+title: Data Guidelines
+permalink: /data-guide/
 layout: splash
 ---
-<h1>Data Format Recommendations</h1>
+<h1>Data Guidelines</h1>
 <div id="data-recommendation">
   <p>
     <h2>Table for environmental data</h2>
