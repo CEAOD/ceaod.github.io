@@ -17,7 +17,7 @@ This guide helps you contributing your dataset to CEAOD.
 ![Clone1](/assets/images/guide/1.png#fig)  <br />
 - Enter `https://github.com/CEAOD/Data.git` to the `URL`. Then, select your desired `Local path` to store the repository.  
 ![Clone2](/assets/images/guide/2.png#fig)  <br />
-- GitHub Desktop will download the repository.
+- GitHub Desktop will download the repository. <br />
 ![Clone2](/assets/images/guide/3.png#fig)  <br />
 
 4. **Create your dataset branch**  
