@@ -4,6 +4,15 @@ permalink: /data-guide/
 layout: splash
 ---
 <h1>Data Guidelines</h1>
+<p>
+For a complete CEA dataset, we recommend at least 3 of the following data files.
+    <ul>
+      <li>Table for environmental data</li>
+      <li>Table for environmental data</li>
+      <li>Metadata: description of the dataset</li>
+    </ul>
+</p>
+
 <div id="data-recommendation">
   <p>
     <h2>Table for environmental data</h2>
