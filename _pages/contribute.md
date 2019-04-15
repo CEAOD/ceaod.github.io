@@ -9,6 +9,7 @@ This guide helps you contributing your dataset to CEAOD.
 
 1. Register a GitHub account
 > Skip this step if you have a GitHub account already  
+
 Go to [register page](https://github.com/join) and enter your information, GitHub will create an account for you. <br />
 ![Register](/assets/images/guide/register.png#fig)  <br />
 > You need the permission to contribute to the CEAOD Data repository. You can request your permission by [contacting](/contact) the maintainers.  
