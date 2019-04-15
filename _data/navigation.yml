@@ -2,6 +2,8 @@
 main:
   - title: "About"
     url: /
+  - title: "Data Format Recommendation"
+    url: /data-format-recommendation/  
   - title: "Contribute"
     url: /contribute/
   - title: "Download"
