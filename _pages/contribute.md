@@ -12,7 +12,6 @@ This guide helps you contributing your dataset to CEAOD.
 1. Download and install [GitHub Desktop](https://desktop.github.com)
 2. Sign in and configure your profile in GitHub Desktop  
 ![Sign in](/assets/images/guide/0.png#fig)  <br />
-![Configure](/assets/images/guide/0a.png#fig)  
 3. **Clone the repository**
 - After signing in, click `Clone a repository from the Internet...`  
 ![Clone1](/assets/images/guide/1.png#fig)  <br />
@@ -24,9 +23,9 @@ This guide helps you contributing your dataset to CEAOD.
 4. **Create your dataset branch**  
 *Only if you don't have your dataset branch yet.*   
 - Select `CEAOD Data` repository in GitHub Desktop and click `Current branch master`
-![Branch 1](/assets/images/guide/4.png#fig)  <br />
-- Click `New branch` and enter your dataset name.
-![Branch 2](/assets/images/guide/5.png#fig)  <br />
+![Branch 1](/assets/images/guide/4.png)  <br />
+- Click `New branch` and enter your dataset name. <br />
+![Branch 2](/assets/images/guide/5.png)  <br />
 ![Branch 3](/assets/images/guide/6.png#fig)  <br />
 Then `Create branch`.
 5. Make sure your dataset is showed as the `Current branch` ![Branch 4](/assets/images/guide/6b.png)
@@ -39,7 +38,7 @@ Then `Create branch`.
 - Turn back to the GitHub Desktop, you can see your new dataset files in `Changes` (red arrow). Enter title and description of your changes (green arrows), then click `Commit`.  
 ![Submit 1](/assets/images/guide/9.png#fig)  <br />
 - Now you can see, your changes is committed and nothing is in `Changes` panel. Click `Publish branch` to submit the dataset.  
-![Submit 2](/assets/images/guide/10.png#fig)  <br />
+![Submit 2](/assets/images/guide/10.png)  <br />
 8. **Review the dataset**  
 You can commit and publish the dataset many times using GitHub Desktop. Once you done, go to `https://github.com/CEAOD/Data/branches`, you can see your dataset there, click `New pull request` to notice the maintainers merge your dataset to the `master` branch which is showed in [Download section](/download/).
 ![Submit 2](/assets/images/guide/11.png#fig)  <br />
