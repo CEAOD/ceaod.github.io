@@ -2,8 +2,8 @@
 main:
   - title: "About"
     url: /
-  - title: "Data Format Recommendation"
-    url: /data-format-recommendation/  
+  - title: "Data Guidelines"
+    url: /data-guide/  
   - title: "Contribute"
     url: /contribute/
   - title: "Download"
