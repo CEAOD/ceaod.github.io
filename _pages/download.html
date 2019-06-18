@@ -193,7 +193,7 @@ layout: splash
         }
 
         var readMe = function (raw_url) {
-            var converter = new showdown.Converter();
+            var converter = new showdown.Converter({tables: true});
             $.get(raw_url, function (data) {
                 var html = converter.makeHtml(data);
                 $('#readme').html(html);
