@@ -15,7 +15,7 @@ Go to [register page](https://github.com/join) and enter your information, GitHu
 3. Fork the repository to your own account  
 ![Fork](/assets/images/guide/gitfork.png#fig)  <br />
 Wait a few second, you will be redirect to your forked repository.  
-Copy the repository *HTTPS* link: **https://github.com/<your_user_name>/Data.git** to use in step 6  
+Copy the repository *HTTPS* link: **https://github.com/your_user_name/Data.git** to use in step 6  
 ![Copy](/assets/images/guide/git_url.png#fig)  <br />
 4. Download and install [GitHub Desktop](https://desktop.github.com)
 5. Sign in and configure your profile in GitHub Desktop  
