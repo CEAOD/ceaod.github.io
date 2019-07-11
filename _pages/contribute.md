@@ -35,7 +35,7 @@ Copy the repository *HTTPS* link: **https://github.com/your_user_name/Data.git**
 8. **Submit your dataset**
 - Turn back to the GitHub Desktop, you can see your new dataset files in `Changes` (red arrow). Enter title and description of your changes (green arrows), then click `Commit`.  
 ![Submit 1](/assets/images/guide/9.png#fig)  <br />
-- Now you can see, your changes is committed and nothing is in `Changes` panel. Click `Publish branch` to submit the dataset.  
+- Now you can see, your changes is committed and nothing is in `Changes` panel. Click `Publish origin` to submit the dataset.  
 ![Submit 2](/assets/images/guide/10.png)  <br />
 9. **Review the dataset**  
 You can commit and publish the dataset many times using GitHub Desktop. Once you done, go to your `repository HTTPS URL` at step 3, click `New pull request` to notice the maintainers merge your dataset to the `master` branch which is showed in [Download section](/download/).
