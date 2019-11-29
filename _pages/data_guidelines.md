@@ -8,7 +8,7 @@ layout: splash
 For a complete CEA dataset, we recommend at least 3 of the following data files.
     <ul>
       <li>Table for environmental data</li>
-      <li>Table for environmental data</li>
+      <li>Table for crop/biological data</li>
       <li>Metadata: description of the dataset</li>
     </ul>
 </p>
@@ -50,7 +50,7 @@ For a complete CEA dataset, we recommend at least 3 of the following data files.
     <ul>
       <li>Funding source</li>
 
-      <li>Specs of instruments and calibration method used</li>
+      <li>Specs of instruments and calibration method use, preferably following <a href="https://www.controlledenvironments.org/international-controlled-env-guidelines/">NCERA-101 Guidelines</a></li>
 
       <li>Known problems limiting the data use</li>
 
@@ -95,3 +95,7 @@ For a complete CEA dataset, we recommend at least 3 of the following data files.
     </tbody>
   </table>
 </div>
+
+
+<h1>Help?</h1>
+Please contact Site Manager (Kenneth Tran, x@kentran.net) for assistance.
