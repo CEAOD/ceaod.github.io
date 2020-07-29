@@ -1,0 +1,806 @@
+---
+title: Contribute
+permalink: /contribute/
+layout: splash
+---
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>CEAOD Upload Guide</title>
+	<style>
+		/* webkit printing magic: print all background colors */
+		/* html {
+			-webkit-print-color-adjust: exact;
+		}
+		* {
+			box-sizing: border-box;
+			-webkit-print-color-adjust: exact;
+		}
+
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+		} */
+		/* @media only screen {
+			body {
+				margin: 2em auto;
+				max-width: 900px;
+				color: rgb(55, 53, 47);
+			}
+		} */
+
+		/* body {
+			line-height: 1.5;
+			white-space: pre-wrap;
+		} */
+
+		a,
+		a.visited {
+			color: inherit;
+			text-decoration: underline;
+		}
+
+		.pdf-relative-link-path {
+			font-size: 80%;
+			color: #444;
+		}
+
+		/* h1,
+		h2,
+		h3 {
+			letter-spacing: -0.01em;
+			line-height: 1.2;
+			font-weight: 600;
+			margin-bottom: 0;
+		} */
+
+		.page-title {
+			font-size: 2.5rem;
+			font-weight: 700;
+			margin-top: 0;
+			margin-bottom: 0.75em;
+		}
+
+		/* h1 {
+			font-size: 1.875rem;
+			margin-top: 1.875rem;
+		}
+
+		h2 {
+			font-size: 1.5rem;
+			margin-top: 1.5rem;
+		}
+
+		h3 {
+			font-size: 1.25rem;
+			margin-top: 1.25rem;
+		} */
+
+		.source {
+			border: 1px solid #ddd;
+			border-radius: 3px;
+			padding: 1.5em;
+			word-break: break-all;
+		}
+
+		.callout {
+			border-radius: 3px;
+			padding: 1rem;
+		}
+
+		figure {
+			margin: 1.25em 0;
+			page-break-inside: avoid;
+		}
+
+		figcaption {
+			opacity: 0.5;
+			font-size: 85%;
+			margin-top: 0.5em;
+		}
+
+		mark {
+			background-color: transparent;
+		}
+
+		.indented {
+			padding-left: 1.5em;
+		}
+
+		hr {
+			background: transparent;
+			display: block;
+			width: 100%;
+			height: 1px;
+			visibility: visible;
+			border: none;
+			border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+		}
+
+		img {
+			max-width: 100%;
+		}
+
+		@media only print {
+			img {
+				max-height: 100vh;
+				object-fit: contain;
+			}
+		}
+		@page {
+			margin: 1in;
+		}
+
+		.collection-content {
+			font-size: 0.875rem;
+		}
+
+		.column-list {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.column {
+			padding: 0 1em;
+		}
+
+		.column:first-child {
+			padding-left: 0;
+		}
+
+		.column:last-child {
+			padding-right: 0;
+		}
+
+		.table_of_contents-item {
+			display: block;
+			font-size: 0.875rem;
+			line-height: 1.3;
+			padding: 0.125rem;
+		}
+
+		.table_of_contents-indent-1 {
+			margin-left: 1.5rem;
+		}
+
+		.table_of_contents-indent-2 {
+			margin-left: 3rem;
+		}
+
+		.table_of_contents-indent-3 {
+			margin-left: 4.5rem;
+		}
+
+		.table_of_contents-link {
+			text-decoration: none;
+			opacity: 0.7;
+			border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+		}
+
+		table,
+		th,
+		td {
+			border: 1px solid rgba(55, 53, 47, 0.09);
+			border-collapse: collapse;
+		}
+
+		table {
+			border-left: none;
+			border-right: none;
+		}
+
+		th,
+		td {
+			font-weight: normal;
+			padding: 0.25em 0.5em;
+			line-height: 1.5;
+			min-height: 1.5em;
+			text-align: left;
+		}
+
+		th {
+			color: rgba(55, 53, 47, 0.6);
+		}
+
+		/* ol,
+		ul {
+			margin: 0;
+			margin-block-start: 0.6em;
+			margin-block-end: 0.6em;
+		}
+
+		li > ol:first-child,
+		li>ul:first-child {
+			margin-block-start: 0.6em;
+		} */
+
+		/* ul>li {
+			list-style: disc;
+		}
+
+		ul.to-do-list {
+			text-indent: -1.7em;
+		}
+
+		ul.to-do-list>li {
+			list-style: none;
+		} */
+
+		.to-do-children-checked {
+			text-decoration: line-through;
+			opacity: 0.375;
+		}
+
+		ul.toggle>li {
+			list-style: none;
+		}
+
+		/* ul {
+			padding-inline-start: 1.7em;
+		}
+
+		ul>li {
+			padding-left: 0.1em;
+		}
+
+		ol {
+			padding-inline-start: 1.6em;
+		}
+
+		ol>li {
+			padding-left: 0.2em;
+		}
+
+		.mono ol {
+			padding-inline-start: 2em;
+		}
+
+		.mono ol>li {
+			text-indent: -0.4em;
+		} */
+
+		.toggle {
+			padding-inline-start: 0em;
+			list-style-type: none;
+		}
+
+		/* Indent toggle children */
+		.toggle>li>details {
+			padding-left: 1.7em;
+		}
+
+		.toggle>li>details>summary {
+			margin-left: -1.1em;
+		}
+
+		.selected-value {
+			display: inline-block;
+			padding: 0 0.5em;
+			background: rgba(206, 205, 202, 0.5);
+			border-radius: 3px;
+			margin-right: 0.5em;
+			margin-top: 0.3em;
+			margin-bottom: 0.3em;
+			white-space: nowrap;
+		}
+
+		.collection-title {
+			display: inline-block;
+			margin-right: 1em;
+		}
+
+		time {
+			opacity: 0.5;
+		}
+
+		.icon {
+			display: inline-block;
+			max-width: 1.2em;
+			max-height: 1.2em;
+			text-decoration: none;
+			vertical-align: text-bottom;
+			margin-right: 0.5em;
+		}
+
+		img.icon {
+			border-radius: 3px;
+		}
+
+		.user-icon {
+			width: 1.5em;
+			height: 1.5em;
+			border-radius: 100%;
+			margin-right: 0.5rem;
+		}
+
+		.user-icon-inner {
+			font-size: 0.8em;
+		}
+
+		.text-icon {
+			border: 1px solid #000;
+			text-align: center;
+		}
+
+		.page-cover-image {
+			display: block;
+			object-fit: cover;
+			width: 100%;
+			height: 30vh;
+		}
+
+		.page-header-icon {
+			font-size: 3rem;
+			margin-bottom: 1rem;
+		}
+
+		.page-header-icon-with-cover {
+			margin-top: -0.72em;
+			margin-left: 0.07em;
+		}
+
+		.page-header-icon img {
+			border-radius: 3px;
+		}
+
+		.link-to-page {
+			margin: 1em 0;
+			padding: 0;
+			border: none;
+			font-weight: 500;
+		}
+
+		p>.user {
+			opacity: 0.5;
+		}
+
+		td>.user,
+		td>time {
+			white-space: nowrap;
+		}
+
+		input[type="checkbox"] {
+			transform: scale(1.5);
+			margin-right: 0.6em;
+			vertical-align: middle;
+		}
+
+		p {
+			margin-top: 0.5em;
+			margin-bottom: 0.5em;
+		}
+
+		.image {
+			border: none;
+			margin: 1.5em 0;
+			padding: 0;
+			border-radius: 0;
+			text-align: center;
+		}
+
+		.code,
+		code {
+			background: rgba(135, 131, 120, 0.15);
+			border-radius: 3px;
+			padding: 0.2em 0.4em;
+			border-radius: 3px;
+			font-size: 85%;
+			tab-size: 2;
+		}
+
+		code {
+			color: #eb5757;
+		}
+
+		.code {
+			padding: 1.5em 1em;
+		}
+
+		.code-wrap {
+			white-space: pre-wrap;
+			word-break: break-all;
+		}
+
+		.code>code {
+			background: none;
+			padding: 0;
+			font-size: 100%;
+			color: inherit;
+		}
+
+		blockquote {
+			font-size: 1.25em;
+			margin: 1em 0;
+			padding-left: 1em;
+			border-left: 3px solid rgb(55, 53, 47);
+		}
+
+		.bookmark {
+			text-decoration: none;
+			max-height: 8em;
+			padding: 0;
+			display: flex;
+			width: 100%;
+			align-items: stretch;
+		}
+
+		.bookmark-title {
+			font-size: 0.85em;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			height: 1.75em;
+			white-space: nowrap;
+		}
+
+		.bookmark-text {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.bookmark-info {
+			flex: 4 1 180px;
+			padding: 12px 14px 14px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+
+		.bookmark-image {
+			width: 33%;
+			flex: 1 1 180px;
+			display: block;
+			position: relative;
+			object-fit: cover;
+			border-radius: 1px;
+		}
+
+		.bookmark-description {
+			color: rgba(55, 53, 47, 0.6);
+			font-size: 0.75em;
+			overflow: hidden;
+			max-height: 4.5em;
+			word-break: break-word;
+		}
+
+		.bookmark-href {
+			font-size: 0.75em;
+			margin-top: 0.25em;
+		}
+
+		.sans {
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+		}
+
+		.code {
+			font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+		}
+
+		.serif {
+			font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif;
+		}
+
+		.mono {
+			font-family: iawriter-mono, Nitti, Menlo, Courier, monospace;
+		}
+
+		.pdf .sans {
+			font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR';
+		}
+
+		.pdf .code {
+			font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR';
+		}
+
+		.pdf .serif {
+			font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR';
+		}
+
+		.pdf .mono {
+			font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR';
+		}
+
+		.highlight-default {}
+
+		.highlight-gray {
+			color: rgb(155, 154, 151);
+		}
+
+		.highlight-brown {
+			color: rgb(100, 71, 58);
+		}
+
+		.highlight-orange {
+			color: rgb(217, 115, 13);
+		}
+
+		.highlight-yellow {
+			color: rgb(223, 171, 1);
+		}
+
+		.highlight-teal {
+			color: rgb(15, 123, 108);
+		}
+
+		.highlight-blue {
+			color: rgb(11, 110, 153);
+		}
+
+		.highlight-purple {
+			color: rgb(105, 64, 165);
+		}
+
+		.highlight-pink {
+			color: rgb(173, 26, 114);
+		}
+
+		.highlight-red {
+			color: rgb(224, 62, 62);
+		}
+
+		.highlight-gray_background {
+			background: rgb(235, 236, 237);
+		}
+
+		.highlight-brown_background {
+			background: rgb(233, 229, 227);
+		}
+
+		.highlight-orange_background {
+			background: rgb(250, 235, 221);
+		}
+
+		.highlight-yellow_background {
+			background: rgb(251, 243, 219);
+		}
+
+		.highlight-teal_background {
+			background: rgb(221, 237, 234);
+		}
+
+		.highlight-blue_background {
+			background: rgb(221, 235, 241);
+		}
+
+		.highlight-purple_background {
+			background: rgb(234, 228, 242);
+		}
+
+		.highlight-pink_background {
+			background: rgb(244, 223, 235);
+		}
+
+		.highlight-red_background {
+			background: rgb(251, 228, 228);
+		}
+
+		.block-color-default {
+			color: inherit;
+			fill: inherit;
+		}
+
+		.block-color-gray {
+			color: rgba(55, 53, 47, 0.6);
+			fill: rgba(55, 53, 47, 0.6);
+		}
+
+		.block-color-brown {
+			color: rgb(100, 71, 58);
+			fill: rgb(100, 71, 58);
+		}
+
+		.block-color-orange {
+			color: rgb(217, 115, 13);
+			fill: rgb(217, 115, 13);
+		}
+
+		.block-color-yellow {
+			color: rgb(223, 171, 1);
+			fill: rgb(223, 171, 1);
+		}
+
+		.block-color-teal {
+			color: rgb(15, 123, 108);
+			fill: rgb(15, 123, 108);
+		}
+
+		.block-color-blue {
+			color: rgb(11, 110, 153);
+			fill: rgb(11, 110, 153);
+		}
+
+		.block-color-purple {
+			color: rgb(105, 64, 165);
+			fill: rgb(105, 64, 165);
+		}
+
+		.block-color-pink {
+			color: rgb(173, 26, 114);
+			fill: rgb(173, 26, 114);
+		}
+
+		.block-color-red {
+			color: rgb(224, 62, 62);
+			fill: rgb(224, 62, 62);
+		}
+
+		.block-color-gray_background {
+			background: rgb(235, 236, 237);
+		}
+
+		.block-color-brown_background {
+			background: rgb(233, 229, 227);
+		}
+
+		.block-color-orange_background {
+			background: rgb(250, 235, 221);
+		}
+
+		.block-color-yellow_background {
+			background: rgb(251, 243, 219);
+		}
+
+		.block-color-teal_background {
+			background: rgb(221, 237, 234);
+		}
+
+		.block-color-blue_background {
+			background: rgb(221, 235, 241);
+		}
+
+		.block-color-purple_background {
+			background: rgb(234, 228, 242);
+		}
+
+		.block-color-pink_background {
+			background: rgb(244, 223, 235);
+		}
+
+		.block-color-red_background {
+			background: rgb(251, 228, 228);
+		}
+
+		.select-value-color-default {
+			background-color: rgba(206, 205, 202, 0.5);
+		}
+
+		.select-value-color-gray {
+			background-color: rgba(155, 154, 151, 0.4);
+		}
+
+		.select-value-color-brown {
+			background-color: rgba(140, 46, 0, 0.2);
+		}
+
+		.select-value-color-orange {
+			background-color: rgba(245, 93, 0, 0.2);
+		}
+
+		.select-value-color-yellow {
+			background-color: rgba(233, 168, 0, 0.2);
+		}
+
+		.select-value-color-green {
+			background-color: rgba(0, 135, 107, 0.2);
+		}
+
+		.select-value-color-blue {
+			background-color: rgba(0, 120, 223, 0.2);
+		}
+
+		.select-value-color-purple {
+			background-color: rgba(103, 36, 222, 0.2);
+		}
+
+		.select-value-color-pink {
+			background-color: rgba(221, 0, 129, 0.2);
+		}
+
+		.select-value-color-red {
+			background-color: rgba(255, 0, 26, 0.2);
+		}
+
+		.checkbox {
+			display: inline-flex;
+			vertical-align: text-bottom;
+			width: 16;
+			height: 16;
+			background-size: 16px;
+			margin-left: 2px;
+			margin-right: 5px;
+		}
+
+		.checkbox-on {
+			background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+		}
+
+		.checkbox-off {
+			background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+		}
+	</style>
+</head>
+
+<body>
+	<article id="623791d3-6e7a-4157-9bf2-cc0b87eb0f69">
+		<header>
+			<h1 class="page-title">CEAOD Upload Guide</h1>
+		</header>
+		<div class="page-body">
+			<p id="968abe23-416b-4147-9d00-4e32cdb71188" class="">Please follow these steps to upload your dataset to
+				the CEAOD platform.</p>
+			<h2 id="b6351387-ae49-4707-ac79-cda3cd98be3f" class="">1. <strong>Sign in/up to GitHub</strong></h2>
+			<p id="2b5c03fd-8148-4732-9de8-557bee4aa5ce" class="">We use <a
+					href="https://github.com"><code>GitHub</code></a>, a widely used open source platform, as our
+				underlying data storage platform. So, if you don&#x27;t already have an account on GitHub, please
+				register one at <a href="https://github.com/">https://github.com</a>. (It takes seconds to sign up for a
+				GitHub account.)</p>
+			<h2 id="d7a8181b-33f5-4e77-9782-965f47c0ebdf" class=""><strong>2. Fork the
+				</strong><code><strong>CEAOD/Data</strong></code><strong> repository</strong></h2>
+			<figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex"
+				id="5fbaa8c6-4c89-4066-9584-9a21656227ca">
+				<div style="font-size:1.5em"><span class="icon">💡</span></div>
+				<div style="width:100%">In GitHub, <code>fork</code> means that you&#x27;re copying the official data repository to your own account. You can change your forked repository however you want without mistakenly damaging the official repository. In the later step, after you upload your data to the forked repository, you can request your changes to be reviewed and merged into the official repository.</div>
+			</figure>
+			<p id="cfffbeba-e89d-4971-bb60-51ecd1a5873b" class="">Go to the official data repository (<a
+					href="https://github.com/CEAOD/Data">https://github.com/CEAOD/Data</a>) and click <code>Fork</code>.
+				Let&#x27;s call it <code>MyCEAOD</code> .</p>
+			<figure id="dd9be69a-768e-4d5e-b1b5-1477ce11daa6" class="image"><a
+					href="/assets/images/gifs/CEAOD_Data__CEA_Open_Data.gif"><img
+						style="width:1670px"
+						src="/assets/images/gifs/CEAOD_Data__CEA_Open_Data.gif" /></a>
+			</figure>
+			<h2 id="d53025f8-6414-4c08-812c-ef99a46c8b63" class=""><strong>3. Upload your dataset(s)</strong></h2>
+			<p id="a86fad2c-1e17-4ba8-9760-5b5a59ea9c62" class=""><strong>On your computer</strong></p>
+			<ul id="ac45a036-875a-4b85-a116-4ed068408719" class="bulleted-list">
+				<li>Organize your data as a folder on your computer and name it appropirately following CEAOD&#x27;s <a
+						href="https://github.com/CEAOD/data">dataset naming convention</a></li>
+			</ul>
+			<ul id="f72562f3-3bba-4ee9-9e48-31e4b677cded" class="bulleted-list">
+				<li>Organize and format your data files following <a href="https://ceaod.github.io/data-guide/">our data
+						format guidelines</a></li>
+			</ul>
+			<p id="7ff7bc7b-5914-4b0a-acd0-4453c6d1d4b5" class=""><strong>Then, within your forked repository (i.e.
+				</strong><code><strong>MyCEAOD</strong></code><strong>)</strong></p>
+			<ul id="699ab3f6-dba8-4c6f-9ee1-caafe1785ac8" class="bulleted-list">
+				<li>Go to the parent directory under which you intent to upload your data</li>
+			</ul>
+			<ul id="a211319a-7407-48da-8d97-aaad07931b66" class="bulleted-list">
+				<li>Drag and drop your local data folder to this web folder<figure
+						id="bf388832-423f-4ba0-83e7-48781a615e8b" class="image"><a
+							href="/assets/images/gifs/Untitled__Jul_16_2020_11_36_PM.gif"><img
+								style="width:922px"
+								src="/assets/images/gifs/Untitled__Jul_16_2020_11_36_PM.gif" /></a>
+					</figure>
+					<p id="fb1008e6-a952-480b-b296-331fe92c82af" class="">
+					</p>
+				</li>
+			</ul>
+			<h2 id="f6941220-2d1b-480e-a723-8fe64d480fca" class="">4. Review and commit <strong>changes</strong></h2>
+			<p id="5ce5b6b5-17f5-4222-8f0e-54280b67e0f2" class="">Review your uploaded data and commit the changes that
+				you&#x27;re making to <code>MyCEAOD</code>. Add a short message to your <code>commit</code>. A
+				<code>commit</code> is basically a confirmation of your upload or change. You can keep editing by adding
+				a new commit on top of your previous commit(s). It&#x27;s similar to a blockchain without being a
+				<code>blockchain</code>.</p>
+			<figure id="4f88d634-f505-4ec0-882f-343ab05a5e6a" class="image"><a
+					href="/assets/images/gifs/thaonf_Data_at_1b144ab1401a83cf92f840143032f46349bfecd6.gif"><img
+						style="width:1440px"
+						src="/assets/images/gifs/thaonf_Data_at_1b144ab1401a83cf92f840143032f46349bfecd6.gif" /></a>
+			</figure>
+			<h2 id="8818e064-158d-4de1-952c-018843c7bc59" class=""><strong>5. Review Request</strong></h2>
+			<p id="07bb17d7-20c4-4395-9c99-ba98076f0e1d" class="">After making changes (after step #4), create a
+				<code>pull request</code> to ask CEAOD&#x27;s admins to review your changes. Our review is mostly making
+				sure that you follow our data guidelines.</p>
+			<figure id="e332f632-2a3d-4d31-8472-a04b4eef59ce" class="image"><a
+					href="/assets/images/gifs/thaonf_Data_at_1b144ab1401a83cf92f840143032f46349bfecd6_(1).gif"><img
+						style="width:1018px"
+						src="/assets/images/gifs/thaonf_Data_at_1b144ab1401a83cf92f840143032f46349bfecd6_(1).gif" /></a>
+			</figure>
+			<p id="bf62550b-3bde-4a48-91ef-1892ef9a064d" class="">
+			</p>
+			<p id="40c48302-4f8e-417a-9968-c76fdd5f9c19" class="">That&#x27;s it! ✌</p>
+		</div>
+	</article>
+</body>
+
+</html>
