@@ -98,4 +98,4 @@ For a complete CEA dataset, we recommend at least 3 of the following data files.
 
 
 <h1>Help?</h1>
-This guideline is under maintenance by [Koidra Inc](https://www.koidra.ai). Please contact support@koidra.ai for assistance.
+This guideline is under maintenance by [Koidra Inc](https://www.koidra.ai). Please contact [support@koidra.ai](mailto:support@koidra.ai?subject=CEAOD:%20Data%20Guidelines) for assistance.
